@@ -18,10 +18,18 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      process.env.CLIENT_URL,
+    ].filter(Boolean),
   })
 );
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "AI Resume Analyzer API is running",
+  });
+});
 app.use("/api/user", UserRoutes);
 app.use("/api/resume", ResumeRoutes);
 
@@ -71,7 +79,7 @@ const startServer = async () => {
   try {
     await connectDB();
 
-    app.listen(port, () => {
+    app.listen(port, "0.0.0.0", () => {
       console.log(`App is listening on port: ${port}`);
     });
   } catch (err) {

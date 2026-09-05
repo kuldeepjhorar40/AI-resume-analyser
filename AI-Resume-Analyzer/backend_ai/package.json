@@ -7,8 +7,9 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cohere-ai": "^8.1.0",
@@ -17,7 +18,9 @@
     "express": "^5.2.1",
     "mongoose": "^9.9.4",
     "multer": "^2.3.0",
-    "nodemon": "^3.1.14",
     "pdf-parse": "^2.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
