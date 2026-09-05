@@ -1,0 +1,474 @@
+/* =========================
+   MAIN DASHBOARD
+========================= */
+
+.Dashboard {
+    flex: 0.8;
+    min-height: 100vh;
+    overflow: auto;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 10px;
+    gap: 20px;
+
+    /* background-color: whitesmoke; */
+    background-color: whitesmoke;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.DashboardLeft {
+    width: 70%;
+    height: fit-content;
+
+    padding: 30px;
+
+    background-color: #f4f6fa;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADINGS
+========================= */
+
+.DashboardHeaderTitle {
+    font-size: 26px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+.DashboardHeaderLargeTitle {
+    font-size: 52px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   INSTRUCTION BOX
+========================= */
+
+.alertInfo {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border-radius: 30px;
+
+    padding: 15px 20px;
+
+    background-color: white;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    font-size: 16px;
+
+    margin: 40px 0;
+}
+
+.instructionTitle {
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+.dashboardInstruction {
+    margin-left: 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* =========================
+   UPLOAD SECTION
+========================= */
+
+.DashboardUploadResume {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+}
+
+
+/* =========================
+   ROW 1
+========================= */
+
+.uploadRow {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.DashboardResumeBlock {
+    flex: 1;
+
+    min-height: 80px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 20px 25px;
+
+    box-sizing: border-box;
+
+    background-color: white;
+
+    border-radius: 30px;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+.fileName {
+    margin-top: 8px;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color: #555;
+}
+
+
+/* =========================
+   UPLOAD BUTTON
+========================= */
+
+.DashboardInputField {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.uploadBtn {
+    cursor: pointer;
+
+    padding: 20px 40px;
+
+    border: 3px solid black;
+
+    border-radius: 30px;
+
+    background: linear-gradient(
+        90deg,
+        #fca326,
+        #f04a6b
+    );
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    text-align: center;
+
+    transition: 0.2s ease;
+}
+
+.uploadBtn:hover {
+    transform: scale(1.03);
+}
+
+.fileInput {
+    display: none;
+}
+
+
+/* =========================
+   ROW 2
+   TEXTAREA + ANALYZE
+========================= */
+
+.jobDesc {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    box-sizing: border-box;
+}
+
+.textArea {
+    flex: 1;
+
+    width: 65%;
+
+    min-height: 220px;
+
+    padding: 10px 20px;
+
+    box-sizing: border-box;
+
+    border: 2px solid rgb(14, 14, 97);
+
+    border-radius: 5px;
+
+    outline: none;
+
+    background-color: white;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    resize: vertical;
+}
+
+.textArea:focus {
+    border-color: #ff416c;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   ANALYZE BUTTON
+========================= */
+
+.AnalyzeBtn {
+    width: 150px;
+    height: 150px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border: 3px solid black;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        90deg,
+        #ff416c,
+        #ff4b2b
+    );
+
+    color: white;
+
+    font-size: 23px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.AnalyzeBtn:hover {
+    transform: scale(1.03);
+}
+
+
+/* =========================
+   RIGHT SECTION
+========================= */
+
+.DashboardRight {
+    width: 25%;
+
+    margin: 10px auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    box-sizing: border-box;
+}
+
+.DashboardRightTopCard {
+    width: 100%;
+
+    margin: 10px auto;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background-color: white;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.DashboardRightTopCard div:first-child {
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+.profileImg {
+    width: 85px;
+    height: 85px;
+
+    margin: 20px 0;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 1000px) {
+
+    .Dashboard {
+        flex-direction: column;
+    }
+
+    .DashboardLeft {
+        width: 100%;
+    }
+
+    .DashboardRight {
+        width: 100%;
+    }
+
+    .DashboardHeaderLargeTitle {
+        font-size: 40px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 700px) {
+
+    .Dashboard {
+        flex-direction: column;
+    }
+
+    .DashboardLeft {
+        width: 100%;
+
+        padding: 20px;
+    }
+
+    .DashboardHeaderTitle {
+        font-size: 20px;
+    }
+
+    .DashboardHeaderLargeTitle {
+        font-size: 34px;
+    }
+
+    .dashboardInstruction {
+        margin-left: 10px;
+    }
+
+
+    /* upload row */
+
+    .uploadRow {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .DashboardResumeBlock {
+        width: 100%;
+    }
+
+    .DashboardInputField {
+        width: 100%;
+    }
+
+    .uploadBtn {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+    }
+
+
+    /* job description */
+
+    .jobDesc {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .textArea {
+        width: 100%;
+    }
+
+    .AnalyzeBtn {
+        width: 100%;
+        height: auto;
+
+        padding: 18px;
+
+        border-radius: 30px;
+    }
+
+
+    /* right side */
+
+    .DashboardRight {
+        width: 100%;
+
+        margin: 30px auto 10px;
+    }
+}

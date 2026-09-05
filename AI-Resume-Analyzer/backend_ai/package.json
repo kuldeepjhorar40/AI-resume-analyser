@@ -1,0 +1,23 @@
+{
+  "name": "backendpart",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "cohere-ai": "^8.1.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.4",
+    "multer": "^2.3.0",
+    "nodemon": "^3.1.14",
+    "pdf-parse": "^2.4.5"
+  }
+}

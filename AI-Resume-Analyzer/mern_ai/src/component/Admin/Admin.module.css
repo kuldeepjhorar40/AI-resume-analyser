@@ -1,0 +1,177 @@
+.Admin {
+    flex: 0.8;
+    min-width: 0;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 40px;
+
+    background-color: whitesmoke;
+
+    box-sizing: border-box;
+}
+
+
+/* Cards container */
+
+.AdminCardBlock {
+    width: 100%;
+    display: grid;
+
+    /* Automatically changes number of columns */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+
+/* Individual card */
+
+.AdminCard {
+    width: 100%;
+    min-width: 0;
+
+    background-color: white;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    border-radius: 20px;
+    padding: 20px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Card hover effect */
+
+.AdminCard:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.AdminCard h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+
+.AdminCard h3 {
+    margin: 15px 0;
+}
+
+
+.AdminCard p {
+    line-height: 1.5;
+
+    overflow-wrap: break-word;
+
+    word-break: break-word;
+}
+
+
+/* Email */
+
+.email {
+    color: blue;
+    overflow-wrap: anywhere;
+}
+
+
+.cardPercentage {
+    font-size: 34px;
+    text-align: center;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media screen and (max-width: 1024px) {
+
+    .Admin {
+        padding: 30px;
+    }
+
+    .AdminCardBlock {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media screen and (max-width: 780px) {
+
+    .Admin {
+        flex: 1;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .AdminCardBlock {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .AdminCard {
+        padding: 18px;
+        border-radius: 15px;
+    }
+
+    .AdminCard h2 {
+        font-size: 21px;
+    }
+
+    .AdminCard h3 {
+        font-size: 17px;
+    }
+
+    .AdminCard p {
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+
+@media screen and (max-width: 480px) {
+
+    .Admin {
+        padding: 12px;
+    }
+
+    .AdminCardBlock {
+        gap: 15px;
+    }
+
+    .AdminCard {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .AdminCard h2 {
+        font-size: 19px;
+    }
+
+    .AdminCard h3 {
+        font-size: 16px;
+    }
+
+    .AdminCard p {
+        font-size: 13px;
+    }
+
+}

@@ -1,0 +1,84 @@
+# ==============================
+# Dependencies
+# ==============================
+node_modules/
+**/node_modules/
+
+# ==============================
+# Environment / Secrets
+# ==============================
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Allow example env files
+!.env.example
+!**/.env.example
+
+# ==============================
+# Build output
+# ==============================
+dist/
+**/dist/
+build/
+**/build/
+
+# ==============================
+# Firebase generated/cache
+# ==============================
+.firebase/
+**/.firebase/
+firebase-debug.log*
+**/firebase-debug.log*
+
+# ==============================
+# AI / Tool Generated Folders
+# ==============================
+**/.agents/
+**/.claude/
+**/skills-lock.json
+AI-Resume-Analyzer/project-tree.txt
+
+# ==============================
+# Postman Local Metadata
+# ==============================
+**/.postman/
+AI-Resume-Analyzer/.postman/
+AI-Resume-Analyzer/postman/
+
+# ==============================
+# Backend Uploaded Resumes
+# ==============================
+AI-Resume-Analyzer/backend_ai/Uploads/*
+!AI-Resume-Analyzer/backend_ai/Uploads/.gitkeep
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==============================
+# Editor / OS Clutter
+# ==============================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Temporary / Generated Files
+# ==============================
+*.tmp
+*.temp
+
+# ==============================
+# Root Package Safeguards
+# ==============================
+/package.json
+/package-lock.json
