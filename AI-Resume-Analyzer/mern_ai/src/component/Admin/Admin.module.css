@@ -6,8 +6,8 @@
     overflow-x: hidden;
     padding: 40px;
 
-    /* background-color: whitesmoke; */
-    background-color: rgb(58, 25, 25);
+    background-color: whitesmoke;
+    /* background-color: rgb(58, 25, 25); */
 
     box-sizing: border-box;
 }
@@ -36,7 +36,9 @@
     width: 100%;
     min-width: 0;
 
-    background-color: rgb(77, 21, 21);
+
+    background-color: aliceblue;
+    /* background-color: rgb(77, 21, 21); */
 
     box-sizing: border-box;
 

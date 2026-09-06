@@ -4,8 +4,8 @@
    overflow: auto;
    padding: 50px;
 
-   /* background-color: whitesmoke; */
-   background-color: rgb(155, 60, 60);
+   background-color: whitesmoke;
+   /* background-color: rgb(155, 60, 60); */
 
    box-sizing: border-box;
 }

@@ -175,31 +175,49 @@ const Dashboard = () => {
 
       try{
 
-  setLoading(true);
 
-  const response =
-    await axios.post(
-      "/api/resume/addResume",
-      formData
-    );
+        setLoading(true);
 
-  console.log(response);
 
-  setResult(
-    response.data.data
-  );
+        const response =
+          await axios.post(
 
-}
-catch(err){
+            "/api/resume/addResume",
 
-  console.log(err);
+            formData
 
-}
-finally{
+          );
 
-  setLoading(false);
 
-}
+        console.log(response);
+
+
+        setResult(
+
+          response.data.data
+
+        );
+
+
+      }
+
+
+      catch(err){
+
+
+        console.log(err);
+
+
+      }
+
+
+      finally{
+
+
+        setLoading(false);
+
+
+      }
 
 
     }
@@ -450,116 +468,134 @@ finally{
 
       {/* RIGHT SIDE */}
 
+      <div
+        className={
+          styles.DashboardRight
+        }
+      >
 
 
-{
-  loading &&
-
-  <Skeleton
-    className={
-      styles.DashboardRightTopCard
-    }
-    variant="rectangular"
-    height={"280px"}
-    animation="wave"
-  />
-}
-
-
-
-{
-  result &&
-
-  <div
-    className={
-      styles.DashboardRightTopCard
-    }
-  >
-
-    <div>
-      Result
-    </div>
-
-    <h1>
-      {result.score}%
-    </h1>
-
-    <div
-      className={
-        styles.feedback
-      }
-    >
-
-      <h3>
-        Feedback
-      </h3>
-
-      <p>
-        {result.feedback}
-      </p>
-
-    </div>
-
-  </div>
-}
-
-        {/*
         <div
           className={
             styles.DashboardRightTopCard
           }
         >
 
+
           <div>
-            Result
+
+            Analyze with AI
+
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 20,
-            }}
+
+          <img
+
+            src={
+              userInfo?.photoUrl
+            }
+
+            alt="User profile"
+
+            className={
+              styles.profileImg
+            }
+
           />
 
-          <h1>
 
-            75%
+          <div>
 
-            {" "}
+            {userInfo?.name}
 
-            <CreditScoreIcon
-              sx={{
-                fontSize: 22,
-              }}
-            />
+          </div>
 
-          </h1>
+
+        </div>
+
+
+        {
+          loading &&
+
+          <Skeleton
+
+            className={
+              styles.DashboardRightTopCard
+            }
+
+            variant="rectangular"
+
+            height={"280px"}
+
+            animation="wave"
+
+          />
+        }
+
+
+        {
+          result &&
 
           <div
             className={
-              styles.feedback
+              styles.DashboardRightTopCard
             }
           >
 
-            <h3>
-              Feedback
-            </h3>
 
-            <p>
-              Lorem ipsum dolor sit amet
-              consectetur adipisicing elit.
-              Nam vel voluptatem perspiciatis
-              assumenda nostrum?
-            </p>
+            <div>
+
+              Result
+
+            </div>
+
+
+            <h1>
+
+              {result.score}%
+
+              {" "}
+
+              <CreditScoreIcon
+
+                sx={{
+                  fontSize: 22,
+                }}
+
+              />
+
+            </h1>
+
+
+            <div
+              className={
+                styles.feedback
+              }
+            >
+
+
+              <h3>
+
+                Feedback
+
+              </h3>
+
+
+              <p>
+
+                {result.feedback}
+
+              </p>
+
+
+            </div>
+
 
           </div>
-
-        </div>
-        */}
+        }
 
 
+      </div>
 
 
     </div>
