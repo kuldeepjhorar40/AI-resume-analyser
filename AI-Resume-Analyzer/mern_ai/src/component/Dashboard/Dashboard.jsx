@@ -175,32 +175,31 @@ const Dashboard = () => {
 
       try{
 
+  setLoading(true);
 
-        const result =
-          await axios.post(
+  const response =
+    await axios.post(
+      "/api/resume/addResume",
+      formData
+    );
 
-            "/api/resume/addResume",
+  console.log(response);
 
-            formData
+  setResult(
+    response.data.data
+  );
 
-          );
+}
+catch(err){
 
+  console.log(err);
 
-        console.log(
-          result
-        );
+}
+finally{
 
+  setLoading(false);
 
-      }
-
-
-      catch(err){
-
-
-        console.log(err);
-
-
-      }
+}
 
 
     }
@@ -451,69 +450,58 @@ const Dashboard = () => {
 
       {/* RIGHT SIDE */}
 
-      <div
-        className={
-          styles.DashboardRight
-        }
-      >
 
 
-        <div
-          className={
-            styles.DashboardRightTopCard
-          }
-        >
+{
+  loading &&
+
+  <Skeleton
+    className={
+      styles.DashboardRightTopCard
+    }
+    variant="rectangular"
+    height={"280px"}
+    animation="wave"
+  />
+}
 
 
-          <div>
-            Analyze with AI
-          </div>
 
+{
+  result &&
 
-          <img
+  <div
+    className={
+      styles.DashboardRightTopCard
+    }
+  >
 
-            src={
-              userInfo?.photoUrl
-            }
+    <div>
+      Result
+    </div>
 
-            alt="User profile"
+    <h1>
+      {result.score}%
+    </h1>
 
-            className={
-              styles.profileImg
-            }
+    <div
+      className={
+        styles.feedback
+      }
+    >
 
-          />
+      <h3>
+        Feedback
+      </h3>
 
+      <p>
+        {result.feedback}
+      </p>
 
-          <div>
+    </div>
 
-            {userInfo?.name}
-
-          </div>
-
-
-        </div>
-
-
-        <Skeleton
-
-          className={
-            styles.DashboardRightTopCard
-          }
-
-          variant="rectangular"
-
-          sx={{
-            margin:
-              "10px auto 20px 0px",
-          }}
-
-          height={"280px"}
-
-          animation="wave"
-
-        />
-
+  </div>
+}
 
         {/*
         <div
@@ -572,7 +560,6 @@ const Dashboard = () => {
         */}
 
 
-      </div>
 
 
     </div>

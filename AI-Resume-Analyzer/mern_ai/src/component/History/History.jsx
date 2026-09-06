@@ -4,43 +4,29 @@ import React, {
   useState
 } from "react";
 
-
 import styles from "./History.module.css";
-
 
 import Skeleton from
   "@mui/material/Skeleton";
 
-
 import withAuthHOC from
   "../utils/HOC/withAuthHoc.jsx";
-
 
 import axios from
   "../utils/axios.js";
 
-
 import {
-  AuthContext,
+  AuthContext
 } from "../utils/AuthContext.jsx";
 
 
 const History = () => {
 
-
-  const [
-    result,
-    setResult
-  ] =
+  const [result,setResult] =
     useState(null);
 
-
-  const [
-    loading,
-    setLoading
-  ] =
+  const [loading,setLoading] =
     useState(false);
-
 
   const {
     isLogin,
@@ -48,9 +34,7 @@ const History = () => {
     userInfo,
     setUserInfo
   } =
-    useContext(
-      AuthContext
-    );
+    useContext(AuthContext);
 
 
   const userId =
@@ -59,62 +43,54 @@ const History = () => {
 
   /*
     HISTORY FLOW:
-    Get logged-in user ID -> History API ->
-    Store resumes -> Render cards
+    User ID -> Resume History API ->
+    Store Result -> Display History
   */
-const handleUpload = async()=>{
+  const handleResumeInfo =
+    async()=>{
 
-  setResult(null);
+      try{
 
-  if(!jobDesc){
-    alert("Please fill Job Description ");
-    return;
-  }
+        setResult(null);
 
-  if(!resumeFile){
-    alert("Please Upload Resume");
-    return;
-  }
+        setLoading(true);
 
-  const formData = new FormData();
 
-  formData.append("resume", resumeFile);
-  formData.append("job_desc", jobDesc);
-  formData.append("user", userInfo._id);
+        const result =
+          await axios.get(
+            `/api/resume/${userId}`
+          );
 
-  try{
 
-    setLoading(true);
+        setResult(
+          result.data.resumes
+        );
 
-    const response =
-      await axios.post(
-        "/api/resume/addResume",
-        formData
-      );
 
-    console.log(response);
+        console.log(
+          result.data.resumes
+        );
 
-    setResult(response.data);
+      }
 
-  }
-  catch(err){
+      catch(err){
 
-    console.log(err);
+        console.log(err);
 
-  }
-  finally{
+      }
 
-    setLoading(false);
+      finally{
 
-  }
-}
+        setLoading(false);
+
+      }
+
+    }
 
 
   useEffect(()=>{
 
-
     handleResumeInfo();
-
 
   },[]);
 
@@ -127,7 +103,6 @@ const handleUpload = async()=>{
       }
     >
 
-
       <div
         className={
           styles.HistoryCardBlock
@@ -135,201 +110,107 @@ const handleUpload = async()=>{
       >
 
 
-        {/* Loading skeleton cards */}
-
         {
-
           loading &&
-
 
           <>
 
-
             <Skeleton
-
-              key={11212}
-
               className={
                 styles.HistoryCard
               }
-
               variant="rectangular"
-
-              sx={{
-                margin:
-                  "10px auto 20px 0px",
-              }}
-
               height={"280px"}
-
               animation="wave"
-
             />
 
-
             <Skeleton
-
-              key={112123}
-
               className={
                 styles.HistoryCard
               }
-
               variant="rectangular"
-
-              sx={{
-                margin:
-                  "10px auto 20px 0px",
-              }}
-
               height={"280px"}
-
               animation="wave"
-
             />
 
-
             <Skeleton
-
-              key={11214322}
-
               className={
                 styles.HistoryCard
               }
-
               variant="rectangular"
-
-              sx={{
-                margin:
-                  "10px auto 20px 0px",
-              }}
-
               height={"280px"}
-
               animation="wave"
-
             />
-
-
-            <Skeleton
-
-              key={11212433}
-
-              className={
-                styles.HistoryCard
-              }
-
-              variant="rectangular"
-
-              sx={{
-                margin:
-                  "10px auto 20px 0px",
-              }}
-
-              height={"280px"}
-
-              animation="wave"
-
-            />
-
 
           </>
 
         }
 
 
-        {/* HISTORY CARD */}
-
         {
-
           result &&
 
           result.map(
-
-            (
-              resumeItem,
-              index
-            )=>{
-
+            (resumeItem,index)=>{
 
               return (
 
-
                 <div
-
                   className={
                     styles.HistoryCard
                   }
-
                   key={
                     resumeItem._id ||
                     index
                   }
-
                 >
-
 
                   <div
                     className={
                       styles.cardPercentage
                     }
                   >
-
                     {resumeItem.score}%
-
                   </div>
 
 
                   <h2>
-
                     {resumeItem.job_desc}
-
                   </h2>
 
 
                   <p>
-
-                    Resume Name : {resumeItem.resume_name}
-
+                    Resume Name :
+                    {" "}
+                    {resumeItem.resume_name}
                   </p>
 
 
                   <p>
-
                     {resumeItem.feedback}
-
                   </p>
 
 
                   <p>
-
-                    Dated : {
-
+                    Dated :
+                    {" "}
+                    {
                       new Date(
                         resumeItem.updatedAt
                       )
                       .toLocaleDateString()
-
                     }
-
                   </p>
-
 
                 </div>
 
-
-              )
-
+              );
 
             }
-
           )
-
         }
 
-
       </div>
-
 
     </div>
 
