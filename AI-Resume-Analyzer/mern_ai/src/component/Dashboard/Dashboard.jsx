@@ -3,82 +3,235 @@ import React, {
   useContext,
 } from "react";
 
+
 import styles from "./Dashboard.module.css";
+
 
 import CreditScoreIcon from
   "@mui/icons-material/CreditScore";
 
+
 import Skeleton from
   "@mui/material/Skeleton";
 
+
 import withAuthHOC from
   "../utils/HOC/withAuthHoc";
+
 
 import {
   AuthContext,
 } from "../utils/AuthContext";
 
-import axios from "../utils/axios";
+
+import axios from
+  "../utils/axios";
+
 
 const Dashboard = () => {
 
 
-const [loading , setLoading] = useState(false);
-const [uploadFileText , setUploadFileText] = useState("Upload Your File");
-const [resumeFile , setResumeFile] = useState(null);
-const [jobDesc , setJobDesc] = useState("");
-const [result , setResult] = useState("");
-const {userInfo} = useContext(AuthContext);
+  const [
+    loading,
+    setLoading
+  ] =
+    useState(false);
 
-const handleOnChangeFile = (event)=>{  
-  setUploadFileText(event.target.files[0].name);
-  setResumeFile(event.target.files[0]);
-};
 
-const handleUpload = async() =>{
-  setResult(null);
-  if(!jobDesc){
-    alert("Please fill Job Description ");
-    return;
-  }
-  if(!resumeFile){
-    alert("Please Upload Resume");
-    return;
-  }
-  const formData = new FormData();
-  formData.append("resume" , resumeFile);
-  formData.append("job_desc" , jobDesc);
-  formData.append("user" , userInfo._id);
-  setLoading(true);
-  try{
-    const result  = await axios.post("/api/resume/addResume" , formData);
-    setResult(result.data.data);
-    
-  }catch(err){
-    console.log(err);
-    
-  }finally{
-    setLoading(false);
-  }
-}
+  const [
+    uploadFileText,
+    setUploadFileText
+  ] =
+    useState(
+      "Upload Your File"
+    );
+
+
+  const [
+    resumeFile,
+    setResumeFile
+  ] =
+    useState(null);
+
+
+  const [
+    jobDesc,
+    setJobDesc
+  ] =
+    useState("");
+
+
+  const [
+    result,
+    setResult
+  ] =
+    useState("");
+
+
+  const {
+    userInfo
+  } =
+    useContext(
+      AuthContext
+    );
+
+
+  /*
+    FILE FLOW:
+    Select PDF -> Show filename ->
+    Store actual File object
+  */
+  const handleOnChangeFile =
+    (event)=>{
+
+
+      setUploadFileText(
+
+        event.target.files[0].name
+
+      );
+
+
+      setResumeFile(
+
+        event.target.files[0]
+
+      );
+
+
+    };
+
+
+  /*
+    ANALYZE FLOW:
+    Resume + Job Description + User ID ->
+    FormData -> Backend Resume API
+  */
+  const handleUpload =
+    async()=>{
+
+
+      setResult(null);
+
+
+      if(!jobDesc){
+
+
+        alert(
+          "Please fill Job Description "
+        );
+
+
+        return;
+
+
+      }
+
+
+      if(!resumeFile){
+
+
+        alert(
+          "Please Upload Resume"
+        );
+
+
+        return;
+
+
+      }
+
+
+      const formData =
+        new FormData();
+
+
+      formData.append(
+
+        "resume",
+
+        resumeFile
+
+      );
+
+
+      formData.append(
+
+        "job_desc",
+
+        jobDesc
+
+      );
+
+
+      formData.append(
+
+        "user",
+
+        userInfo._id
+
+      );
+
+
+      try{
+
+
+        const result =
+          await axios.post(
+
+            "/api/resume/addResume",
+
+            formData
+
+          );
+
+
+        console.log(
+          result
+        );
+
+
+      }
+
+
+      catch(err){
+
+
+        console.log(err);
+
+
+      }
+
+
+    }
+
 
   return (
-    <div className={styles.Dashboard}>
+
+    <div
+      className={
+        styles.Dashboard
+      }
+    >
 
 
       {/* LEFT SIDE */}
+
       <div
         className={
           styles.DashboardLeft
         }
       >
 
+
         <div
           className={
             styles.DashboardHeaderTitle
           }
         >
+
           Smart Resume Screening
+
         </div>
 
 
@@ -87,23 +240,27 @@ const handleUpload = async() =>{
             styles.DashboardHeaderLargeTitle
           }
         >
+
           Resume Matching Score
+
         </div>
 
 
-        {/* Important instructions */}
         <div
           className={
             styles.alertInfo
           }
         >
 
+
           <div
             className={
               styles.instructionTitle
             }
           >
+
             🔔 Important Instructions:
+
           </div>
 
 
@@ -113,24 +270,30 @@ const handleUpload = async() =>{
             }
           >
 
+
             <div>
+
               🗒️ Please paste your complete
               job description in
               "Job Description" before submitting.
+
             </div>
 
 
             <div>
+
               🔗 Only PDF format resumes
               are accepted.
+
             </div>
 
+
           </div>
+
 
         </div>
 
 
-        {/* Resume upload section */}
         <div
           className={
             styles.DashboardUploadResume
@@ -139,11 +302,13 @@ const handleUpload = async() =>{
 
 
           {/* ROW 1 */}
+
           <div
             className={
               styles.uploadRow
             }
           >
+
 
             <div
               className={
@@ -151,22 +316,26 @@ const handleUpload = async() =>{
               }
             >
 
+
               <div>
+
                 {uploadFileText}
+
               </div>
 
 
-              {/* Show selected resume filename */}
-              { (
+              {(
 
                 <div
                   className={
                     styles.fileName
                   }
                 >
+
                 </div>
 
               )}
+
 
             </div>
 
@@ -177,87 +346,124 @@ const handleUpload = async() =>{
               }
             >
 
-              {/* Resume upload button */}
+
               <label
+
                 htmlFor="inputField"
+
                 className={
                   styles.uploadBtn
                 }
+
               >
+
                 Upload Resume
+
               </label>
 
 
-              {/* Resume file input */}
               <input
+
                 className={
                   styles.fileInput
                 }
+
                 type="file"
+
                 accept=".pdf"
+
                 id="inputField"
-                onChange={handleOnChangeFile}
+
+                onChange={
+                  handleOnChangeFile
+                }
+
               />
 
+
             </div>
+
 
           </div>
 
 
           {/* ROW 2 */}
+
           <div
             className={
               styles.jobDesc
             }
           >
 
-            {/* Job description input */}
+
             <textarea
+
               className={
                 styles.textArea
               }
-              placeholder="Paste Your Job Description here..."
+
+              placeholder=
+                "Paste Your Job Description here..."
+
               rows={10}
-              value={jobDesc}
-              onChange={(e) =>
-                setJobDesc(
-                  e.target.value
-                )
+
+              value={
+                jobDesc
               }
+
+              onChange={
+                (e) =>
+
+                  setJobDesc(
+                    e.target.value
+                  )
+              }
+
             />
 
 
-            {/* Analyze button */}
             <button
+
               className={
                 styles.AnalyzeBtn
               }
-              onClick={handleUpload}
+
+              onClick={
+                handleUpload
+              }
+
             >
+
               Analyze
+
             </button>
+
 
           </div>
 
+
         </div>
+
 
       </div>
 
 
 
       {/* RIGHT SIDE */}
+
       <div
         className={
           styles.DashboardRight
         }
       >
 
-        {/* User profile card */}
+
         <div
           className={
             styles.DashboardRightTopCard
           }
         >
+
 
           <div>
             Analyze with AI
@@ -265,48 +471,52 @@ const handleUpload = async() =>{
 
 
           <img
-            src={`${userInfo?.photoUrl}`}
+
+            src={
+              userInfo?.photoUrl
+            }
+
             alt="User profile"
+
             className={
               styles.profileImg
             }
+
           />
 
 
           <div>
-            {`${userInfo?.name}`}
+
+            {userInfo?.name}
+
           </div>
+
 
         </div>
 
 
-        {/* Result loading Skeleton */}
-        {
-          loading && <Skeleton
-                className={
-                  styles.DashboardRightTopCard
-                }
-                variant="rectangular"
-                sx={{
-                  margin:
-                    "10px auto 20px 0px",
-                }}
-                height={"280px"}
-                animation="wave"
-              />
-        }
+        <Skeleton
+
+          className={
+            styles.DashboardRightTopCard
+          }
+
+          variant="rectangular"
+
+          sx={{
+            margin:
+              "10px auto 20px 0px",
+          }}
+
+          height={"280px"}
+
+          animation="wave"
+
+        />
 
 
         {/*
-          RESULT CARD
-
-          Currently commented because
-          your original code also kept it commented.
-        */}
-
-        
-          {
-            result &&  <div
+        <div
           className={
             styles.DashboardRightTopCard
           }
@@ -326,7 +536,8 @@ const handleUpload = async() =>{
           />
 
           <h1>
-            {result?result.score:null}%
+
+            75%
 
             {" "}
 
@@ -335,6 +546,7 @@ const handleUpload = async() =>{
                 fontSize: 22,
               }}
             />
+
           </h1>
 
           <div
@@ -348,20 +560,27 @@ const handleUpload = async() =>{
             </h3>
 
             <p>
-              {result?result.feedback:null}
+              Lorem ipsum dolor sit amet
+              consectetur adipisicing elit.
+              Nam vel voluptatem perspiciatis
+              assumenda nostrum?
             </p>
 
           </div>
 
         </div>
-          }
-       
+        */}
+
 
       </div>
 
+
     </div>
+
   );
+
 };
+
 
 export default withAuthHOC(
   Dashboard

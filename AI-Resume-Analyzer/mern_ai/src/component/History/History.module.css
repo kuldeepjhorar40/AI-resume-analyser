@@ -4,10 +4,12 @@
    overflow: auto;
    padding: 50px;
 
-   background-color: whitesmoke;
+   /* background-color: whitesmoke; */
+   background-color: rgb(155, 60, 60);
 
    box-sizing: border-box;
 }
+
 
 .HistoryCardBlock{
     width: 100%;
@@ -15,6 +17,7 @@
     gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
 }
+
 
 .HistoryCard{
     width: 100%;
@@ -24,10 +27,12 @@
     padding: 20px;
 }
 
+
 .cardPercentage{
     font-size: 34px;
     text-align: center;
 }
+
 
 @media screen and (max-width : 780px) {
 

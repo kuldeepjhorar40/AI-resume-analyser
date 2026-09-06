@@ -1,20 +1,28 @@
 import SideBar from "./component/SideBar/SideBar";
+
 import "./App.css";
 
-import { Routes, Route } from "react-router-dom";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
 import Dashboard from "./component/Dashboard/Dashboard";
 import Admin from "./component/Admin/Admin";
 import History from "./component/History/History";
 import Login from "./component/Login/Login";
 
+
 /*
   APP FLOW:
   App -> Sidebar + Routes
 */
 function App() {
+
   return (
+
     <>
+
       <div className="App">
 
         <SideBar />
@@ -44,8 +52,12 @@ function App() {
         </Routes>
 
       </div>
+
     </>
+
   );
+
 }
+
 
 export default App;

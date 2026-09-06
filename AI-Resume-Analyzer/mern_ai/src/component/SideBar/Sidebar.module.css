@@ -6,6 +6,7 @@
     flex-shrink:0;
 }
 
+
 .sideBarIcon{
     padding:20px 30px;
     display : flex ;
@@ -13,6 +14,7 @@
     align-items:center;
     justify-content: center;
 }
+
 
 .sideBarTopContent{
     font-size: 26px;
@@ -24,6 +26,7 @@
 .sideBarOptionsBlock{
     margin-top: 30px;
 }
+
 
 .sideBarOption{
     display: flex;
@@ -38,9 +41,9 @@
     background: transparent;
 }
 
+
 /*
-  Selected route style.
-  Kept after .sideBarOption so background is not overridden.
+  Selected route style
 */
 .selectedOption{
     background-color: rgb(72,72,222);

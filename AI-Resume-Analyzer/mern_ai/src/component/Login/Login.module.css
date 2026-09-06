@@ -12,6 +12,7 @@
   align-items: center;
 }
 
+
 .loginCard {
   background-color: #1a1a1a;
   padding: 20px;
@@ -20,11 +21,13 @@
   color: white;
 }
 
+
 .loginCardTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 
 .googleBtn {
   padding: 20px;
@@ -40,6 +43,7 @@
   gap: 20px;
   cursor: pointer;
 }
+
 
 @media screen and (max-width : 780px) {
 

@@ -6,7 +6,8 @@
     overflow-x: hidden;
     padding: 40px;
 
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    background-color: rgb(58, 25, 25);
 
     box-sizing: border-box;
 }
@@ -18,8 +19,11 @@
     width: 100%;
     display: grid;
 
-    /* Automatically changes number of columns */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+      );
 
     gap: 20px;
     box-sizing: border-box;
@@ -32,25 +36,27 @@
     width: 100%;
     min-width: 0;
 
-    background-color: white;
+    background-color: rgb(77, 21, 21);
 
     box-sizing: border-box;
 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.15);
 
     border-radius: 20px;
     padding: 20px;
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
 }
 
-
-/* Card hover effect */
 
 .AdminCard:hover {
     transform: translateY(-5px);
 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow:
+      0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -75,8 +81,6 @@
 }
 
 
-/* Email */
-
 .email {
     color: blue;
     overflow-wrap: anywhere;
@@ -89,10 +93,6 @@
 }
 
 
-/* =========================
-   TABLET
-   ========================= */
-
 @media screen and (max-width: 1024px) {
 
     .Admin {
@@ -100,15 +100,15 @@
     }
 
     .AdminCardBlock {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
     }
 
 }
 
-
-/* =========================
-   MOBILE
-   ========================= */
 
 @media screen and (max-width: 780px) {
 
@@ -142,10 +142,6 @@
 
 }
 
-
-/* =========================
-   SMALL MOBILE
-   ========================= */
 
 @media screen and (max-width: 480px) {
 

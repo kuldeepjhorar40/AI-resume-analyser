@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 
+
 /*
   FIREBASE FLOW:
   .env -> firebaseConfig -> Firebase Auth -> Google Provider
@@ -13,8 +14,10 @@ import {
 const apiKey =
   import.meta.env.VITE_FIREBASE_API_KEY;
 
+
 const projectId =
   import.meta.env.VITE_FIREBASE_PROJECT_ID;
+
 
 const firebaseConfig = {
 
@@ -36,14 +39,29 @@ const firebaseConfig = {
 
 };
 
+
 const app =
   initializeApp(firebaseConfig);
+
 
 const auth =
   getAuth(app);
 
+
 const provider =
   new GoogleAuthProvider();
+
+
+/*
+  GOOGLE LOGIN:
+  Let user choose Google account
+*/
+provider.setCustomParameters({
+
+  prompt: "select_account",
+
+});
+
 
 export {
   auth,

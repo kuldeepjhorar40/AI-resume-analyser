@@ -7,11 +7,13 @@ import "./index.css";
 import App from "./App.jsx";
 import AuthProvider from "./component/utils/AuthContext.jsx";
 
+
 /*
   MAIN FLOW:
   BrowserRouter -> AuthProvider -> App
 */
 createRoot(document.getElementById("root")).render(
+
   <StrictMode>
 
     <BrowserRouter>
@@ -25,4 +27,5 @@ createRoot(document.getElementById("root")).render(
     </BrowserRouter>
 
   </StrictMode>
+
 );

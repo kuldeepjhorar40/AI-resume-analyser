@@ -3,9 +3,11 @@ import React, {
   useEffect,
 } from "react";
 
+
 import {
   useNavigate,
 } from "react-router-dom";
+
 
 import {
   AuthContext,
@@ -13,60 +15,44 @@ import {
 
 
 /*
-  AUTH HOC FLOW
-
-  Protected Component
-        ↓
-  withAuthHOC
-        ↓
-  Check isLogin
-      ↙     ↘
-   false    true
-     ↓        ↓
-  Login     Component
+  HOC FLOW:
+  Protected Component -> Check isLogin ->
+  Login page if false / Component if true
 */
-
-
 const withAuthHOC = (
   WrappedComponent
 ) => {
 
 
-  /*
-    Return a new component containing
-    authentication checking logic.
-  */
   return function AuthenticatedComponent(
     props
   ) {
 
 
-    // Get current login state.
     const {
       isLogin,
       setLogin,
-    } = useContext(AuthContext);
+    } =
+      useContext(
+        AuthContext
+      );
 
 
-    // Used to redirect user.
     const navigate =
       useNavigate();
 
 
-    /*
-      Whenever login state changes,
-      check whether user is authenticated.
-    */
     useEffect(() => {
+
 
       if (!isLogin) {
 
         setLogin(false);
 
-        // Send unauthenticated user to Login.
         navigate("/");
 
       }
+
 
     }, [
       isLogin,
@@ -75,10 +61,6 @@ const withAuthHOC = (
     ]);
 
 
-    /*
-      Do not render protected component
-      while user is logged out.
-    */
     if (!isLogin) {
 
       return null;
@@ -86,7 +68,6 @@ const withAuthHOC = (
     }
 
 
-    // User is authenticated.
     return (
 
       <WrappedComponent
@@ -96,6 +77,7 @@ const withAuthHOC = (
     );
 
   };
+
 };
 
 
